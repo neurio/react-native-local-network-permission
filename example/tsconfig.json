@@ -1,0 +1,10 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "paths": {
+      "react-native-local-network-permission": ["../src/index"],
+      "react-native-local-network-permission/*": ["../src/*"]
+    }
+  }
+}

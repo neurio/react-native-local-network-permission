@@ -1,0 +1,92 @@
+{
+  "name": "@neurio/react-native-local-network-permission",
+  "version": "1.0.0",
+  "description": "A React Native / Expo module to request permission to access local network on iOS",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "scripts": {
+    "build": "expo-module build",
+    "clean": "expo-module clean",
+    "lint": "expo-module lint",
+    "test": "expo-module test",
+    "prepare": "expo-module prepare",
+    "prepublishOnly": "expo-module prepublishOnly",
+    "expo-module": "expo-module",
+    "open:ios": "open -a \"Xcode\" example/ios",
+    "commit": "cz"
+  },
+  "keywords": [
+    "react-native",
+    "local-network-permission",
+    "expo",
+    "react-native-local-network-permission",
+    "ReactNativeLocalNetworkPermission"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neurio/react-native-local-network-permission.git"
+  },
+  "bugs": {
+    "url": "https://github.com/neurio/react-native-local-network-permission/issues"
+  },
+  "author": "Generac Power Systems <benjamin.komen@generac.com> (https://github.com/neurio)",
+  "license": "MIT",
+  "homepage": "https://github.com/neurio/react-native-local-network-permission#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/react": "^18.0.25",
+    "expo-module-scripts": "^3.0.11",
+    "expo-modules-core": "^1.5.11",
+    "@commitlint/cli": "18.4.3",
+    "@commitlint/config-conventional": "18.4.3",
+    "@semantic-release/changelog": "6.0.3",
+    "@semantic-release/git": "10.0.1",
+    "commitizen": "4.3.0",
+    "cz-conventional-changelog": "3.3.0",
+    "husky": "8.0.3",
+    "semantic-release": "22.0.12"
+  },
+  "peerDependencies": {
+    "expo": "*",
+    "react": "*",
+    "react-native": "*"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/changelog",
+        {
+          "changelogTitle": "# Change log"
+        }
+      ],
+      "@semantic-release/github",
+      "@semantic-release/npm",
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "package.json",
+            "yarn.lock",
+            "CHANGELOG.md"
+          ],
+          "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+        }
+      ]
+    ]
+  }
+}
