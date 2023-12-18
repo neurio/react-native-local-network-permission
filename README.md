@@ -17,6 +17,7 @@ Add this library to your project:
 
 You need to add the `NSLocalNetworkUsageDescription` key to your `Info.plist` file. This should be a description of why
 your app needs Local Network permissions:
+
 ```
 <key>NSLocalNetworkUsageDescription</key>
 <string>App requires local network access to do ...</string>
@@ -79,8 +80,8 @@ const result = await checkLocalNetworkAccess();
 
 ## Jest mocking
 
-If you need to mock this library in your Jest tests, you can use the following code in your `testSetup.ts` file which you
-need to reference in your `jest.config.js` under `setupFilesAfterEnv`:
+If you need to mock this library in your Jest tests, you can use the following code in your `testSetup.ts` file which
+you need to reference in your `jest.config.js` under `setupFilesAfterEnv`:
 
 ```javascript
 jest.mock('@neurio/react-native-local-network-permission', () => ({
@@ -100,7 +101,6 @@ It is important that you do this properly, because
 the [semantic-release](https://github.com/semantic-release/semantic-release) automation depends on the commit messages
 to be starting with the proper keyword to determine if a major, minor or
 patch [semantic version](https://semver.org/) should be assigned.
-
 
 ## See also
 
