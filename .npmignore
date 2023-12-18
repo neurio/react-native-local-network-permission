@@ -1,0 +1,12 @@
+# Exclude all top-level hidden directories by convention
+/.*/
+
+__mocks__
+__tests__
+
+node_modules
+/example/
+
+.eslintrc.js
+.prettierrc
+renovate.json
