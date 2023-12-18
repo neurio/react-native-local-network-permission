@@ -7,9 +7,9 @@ web.
 
 Add this library to your project:
 
-`npm install @neurio/react-native-local-network-permission`
+`npm install @generac/react-native-local-network-permission`
 
-`yarn add @neurio/react-native-local-network-permission`
+`yarn add @generac/react-native-local-network-permission`
 
 ### iOS manual configuration
 
@@ -68,7 +68,7 @@ This library is correctly autolinked on React Native. It can be used in both Rea
 import {
   checkLocalNetworkAccess,
   requestLocalNetworkAccess,
-} from '@neurio/react-native-local-network-permission';
+} from '@generac/react-native-local-network-permission';
 
 //you need to make sure the local network permission dialog popup once
 const result = await requestLocalNetworkAccess();
@@ -84,7 +84,7 @@ If you need to mock this library in your Jest tests, you can use the following c
 you need to reference in your `jest.config.js` under `setupFilesAfterEnv`:
 
 ```javascript
-jest.mock('@neurio/react-native-local-network-permission', () => ({
+jest.mock('@generac/react-native-local-network-permission', () => ({
     checkLocalNetworkAccess: jest.fn(),
     requestLocalNetworkAccess: jest.fn(),
   }),
