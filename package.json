@@ -1,6 +1,6 @@
 {
   "name": "@generac/react-native-local-network-permission",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A React Native / Expo module to request permission to access local network on iOS",
   "main": "build/index.js",
   "types": "build/index.d.ts",

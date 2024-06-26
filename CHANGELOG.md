@@ -1,5 +1,12 @@
 # Change log
 
+# [1.2.0](https://github.com/neurio/react-native-local-network-permission/compare/v1.1.0...v1.2.0) (2024-06-26)
+
+
+### Features
+
+* force a new release ([993e7ce](https://github.com/neurio/react-native-local-network-permission/commit/993e7ce5e166be834bb939abaf84f3c92c501110))
+
 # 1.0.0 (2023-12-18)
 
 
