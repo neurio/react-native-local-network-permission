@@ -58,13 +58,13 @@ expo: {
 }
 ```
 
-## Autolinking
-
-This library is correctly autolinked on React Native. It can be used in both React Native and Expo projects.
-
 ## Usage
 
-```javascript
+This library can be used in both React Native and Expo projects. Note however:
+- If using Expo, you need to [create a development build](https://docs.expo.dev/develop/development-builds/create-a-build/), using the Expo Go app will not work;
+- If using bare React Native, you need to add Expo modules to your project, see [Expo documentation](https://docs.expo.dev/bare/installing-expo-modules/).
+
+```typescript
 import {
   checkLocalNetworkAccess,
   requestLocalNetworkAccess,
