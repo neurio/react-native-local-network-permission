@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.platforms      = {
     :ios => '14.0'
   }
-  s.swift_version  = '5.9'
+  s.swift_version  = '5.4'
   s.source         = { git: 'https://github.com/neurio/react-native-local-network-permission' }
   s.static_framework = true
 
