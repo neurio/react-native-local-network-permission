@@ -34,17 +34,20 @@
   "homepage": "https://github.com/neurio/react-native-local-network-permission#readme",
   "dependencies": {},
   "devDependencies": {
-    "@types/react": "18.3.3",
-    "expo-module-scripts": "3.5.2",
-    "expo-modules-core": "1.12.15",
-    "@commitlint/cli": "19.3.0",
-    "@commitlint/config-conventional": "19.2.2",
+    "@types/react": "~19.2.0",
+    "eslint": "^9.0.0",
+    "expo-module-scripts": "~56.0.3",
+    "expo-modules-core": "~56.0.14",
+    "prettier": "^3.0.0",
+    "typescript": "~5.9.2",
+    "@commitlint/cli": "21.0.2",
+    "@commitlint/config-conventional": "21.0.2",
     "@semantic-release/changelog": "6.0.3",
     "@semantic-release/git": "10.0.1",
-    "commitizen": "4.3.0",
+    "commitizen": "4.3.1",
     "cz-conventional-changelog": "3.3.0",
-    "husky": "9.0.11",
-    "semantic-release": "24.0.0"
+    "husky": "9.1.7",
+    "semantic-release": "25.0.3"
   },
   "peerDependencies": {
     "expo": "*",
