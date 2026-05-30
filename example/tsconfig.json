@@ -6,5 +6,6 @@
       "react-native-local-network-permission": ["../src/index"],
       "react-native-local-network-permission/*": ["../src/*"]
     }
-  }
+  },
+  "include": ["**/*.ts", "**/*.tsx"]
 }
