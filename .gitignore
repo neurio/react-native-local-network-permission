@@ -39,3 +39,9 @@ yarn-error.log
 
 # Expo
 .expo/*
+
+# Swift Package Manager
+#
+.build/
+.swiftpm/
+Package.resolved
