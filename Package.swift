@@ -29,6 +29,9 @@ let package = Package(
         "ReactNativeLocalNetworkPermissionModule.swift",
         "LocalNetworkAuthorization.swift"
       ],
+      resources: [
+        .copy("PrivacyInfo.xcprivacy")
+      ],
       linkerSettings: [
         .linkedFramework("Network")
       ]

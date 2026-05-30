@@ -26,4 +26,8 @@ Pod::Spec.new do |s|
   }
   
   s.source_files = "**/*.{h,m,swift}"
+
+  s.resource_bundles = {
+    'ReactNativeLocalNetworkPermission_privacy' => ['PrivacyInfo.xcprivacy']
+  }
 end
