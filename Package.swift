@@ -11,6 +11,11 @@
 // shape RFC 0994's autolinking generates and works whenever this package is
 // resolved as a local SPM package alongside a node_modules tree.
 //
+// As a consequence, this manifest does NOT resolve standalone via Xcode's
+// "Add Package Dependencies…" flow today — `../expo-modules-core` only
+// exists when the package is checked out beside an installed `node_modules/`.
+// That changes once Expo / RN ship a published `ExpoModulesCore` SPM product.
+//
 // Platform floor is iOS 14: that is when `NWBrowser` / local network
 // permission first exist. Bumping it would be an unnecessary breaking change
 // for downstream apps still on the CocoaPods path.
@@ -49,6 +54,7 @@ let package = Package(
         .copy("PrivacyInfo.xcprivacy")
       ],
       linkerSettings: [
+        .linkedFramework("Foundation"),
         .linkedFramework("Network")
       ]
     )

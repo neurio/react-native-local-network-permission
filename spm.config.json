@@ -5,7 +5,7 @@
       "name": "ReactNativeLocalNetworkPermission",
       "podName": "ReactNativeLocalNetworkPermission",
       "platforms": [
-        "iOS(.v16)"
+        "iOS(.v14)"
       ],
       "externalDependencies": [
         "ReactNativeDependencies",
