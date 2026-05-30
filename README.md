@@ -11,6 +11,18 @@ Add this library to your project:
 
 `yarn add @generac/react-native-local-network-permission`
 
+### Using Swift Package Manager (Expo SDK 56+)
+
+This module ships with both a CocoaPods podspec and a `Package.swift`. If your app uses Expo's precompiled-modules pipeline (`EXPO_USE_PRECOMPILED_MODULES=1`), Expo's autolinking picks up `spm.config.json` automatically — no extra setup needed.
+
+To add this module to a non-Expo Swift project directly:
+
+1. In Xcode, choose **File → Add Package Dependencies…**
+2. Enter the repository URL: `https://github.com/neurio/react-native-local-network-permission`
+3. Select the version range and add `ReactNativeLocalNetworkPermission` to your target.
+
+The `.podspec` integration path remains supported for all CocoaPods-based React Native apps and is the default for SDK ≤ 55.
+
 ### iOS manual configuration
 
 #### NSLocalNetworkUsageDescription
