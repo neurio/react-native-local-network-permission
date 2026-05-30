@@ -1,0 +1,36 @@
+{
+  "$schema": "https://expo.dev/schemas/spm.config.json",
+  "products": [
+    {
+      "name": "ReactNativeLocalNetworkPermission",
+      "podName": "ReactNativeLocalNetworkPermission",
+      "platforms": [
+        "iOS(.v16)"
+      ],
+      "externalDependencies": [
+        "ReactNativeDependencies",
+        "React",
+        "Hermes",
+        "expo-modules-core/ExpoModulesCore"
+      ],
+      "targets": [
+        {
+          "type": "swift",
+          "name": "ReactNativeLocalNetworkPermission",
+          "path": "ios",
+          "pattern": "*.swift",
+          "dependencies": [
+            "Hermes",
+            "React",
+            "ReactNativeDependencies",
+            "expo-modules-core/ExpoModulesCore"
+          ],
+          "linkedFrameworks": [
+            "Foundation",
+            "Network"
+          ]
+        }
+      ]
+    }
+  ]
+}
