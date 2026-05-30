@@ -5,10 +5,11 @@
 //   https://github.com/react-native-community/discussions-and-proposals/pull/994
 //
 // The RN CLI's SPM autolinking (and Expo's `et prebuild` pipeline that consumes
-// `spm.config.json`) is the supported install path. When the autolinking
-// pipeline lands, the consumer app's generated `Package.swift` provides the
-// `expo-modules-core` package, so this manifest only declares the
-// `ExpoModulesCore` product by name — it does not pin a source.
+// `spm.config.json`) is the supported install path. The expo-modules-core
+// dependency below points at the standard React Native / Expo `node_modules`
+// layout (`../expo-modules-core` relative to this package). That matches the
+// shape RFC 0994's autolinking generates and works whenever this package is
+// resolved as a local SPM package alongside a node_modules tree.
 //
 // Platform floor is iOS 14: that is when `NWBrowser` / local network
 // permission first exist. Bumping it would be an unnecessary breaking change
@@ -26,6 +27,9 @@ let package = Package(
       name: "ReactNativeLocalNetworkPermission",
       targets: ["ReactNativeLocalNetworkPermission"]
     )
+  ],
+  dependencies: [
+    .package(name: "expo-modules-core", path: "../expo-modules-core")
   ],
   targets: [
     .target(
