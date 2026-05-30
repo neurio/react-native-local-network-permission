@@ -2210,7 +2210,7 @@ SPEC CHECKSUMS:
   ReactCodegen: c8f81e6c6f762dcf442a6203a1fb58f7dafc8014
   ReactCommon: 7dfc3250793bf36cf221096ff59e1179e13eef7f
   ReactNativeDependencies: 347356fdcf75630e34e58a7e1e47ccda23445ca9
-  ReactNativeLocalNetworkPermission: 98b58d81444b3574a3027ae23ceb9d617ed81fb2
+  ReactNativeLocalNetworkPermission: 1272fc940428880ce125648e065267851c59af14
   Yoga: 77dfa8673de2874e1855002ae59c68b8be9b007b
 
 PODFILE CHECKSUM: 205f945826e45a10426b45fcad308b28bcd93fdb

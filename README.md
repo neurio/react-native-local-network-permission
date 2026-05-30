@@ -11,17 +11,14 @@ Add this library to your project:
 
 `yarn add @generac/react-native-local-network-permission`
 
-### Using Swift Package Manager (Expo SDK 56+)
+### Swift Package Manager support
 
-This module ships with both a CocoaPods podspec and a `Package.swift`. If your app uses Expo's precompiled-modules pipeline (`EXPO_USE_PRECOMPILED_MODULES=1`), Expo's autolinking picks up `spm.config.json` automatically — no extra setup needed.
+CocoaPods (via the bundled `.podspec`) is still the primary install path and works for every React Native and Expo app today.
 
-To add this module to a non-Expo Swift project directly:
+This module also ships SPM scaffolding for the migration described in [React Native RFC 0994](https://github.com/react-native-community/discussions-and-proposals/pull/994) (CocoaPods deprecation, December 2026):
 
-1. In Xcode, choose **File → Add Package Dependencies…**
-2. Enter the repository URL: `https://github.com/neurio/react-native-local-network-permission`
-3. Select the version range and add `ReactNativeLocalNetworkPermission` to your target.
-
-The `.podspec` integration path remains supported for all CocoaPods-based React Native apps and is the default for SDK ≤ 55.
+- `spm.config.json` — consumed by Expo's `et prebuild` pipeline (`EXPO_USE_PRECOMPILED_MODULES=1`) to generate XCFrameworks. Picked up automatically by Expo's autolinking; no extra setup.
+- `Package.swift` — a forward-compatible manifest. The library target declares its dependency on `ExpoModulesCore` by name; the consumer's autolinking pipeline (RN CLI's SPM autolinking once it lands, or a hand-written brownfield manifest) is responsible for providing `.package(path: ".../node_modules/expo-modules-core")`. As a result, this `Package.swift` does not resolve standalone via "Add Package Dependencies…" in Xcode today — that workflow becomes available once the React Native SPM autolinking proposal lands.
 
 ### iOS manual configuration
 
