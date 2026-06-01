@@ -1,5 +1,5 @@
 {
-  "$schema": "https://expo.dev/schemas/spm.config.json",
+  "$schema": "https://raw.githubusercontent.com/expo/expo/main/tools/src/prebuilds/schemas/spm.config.schema.json",
   "products": [
     {
       "name": "ReactNativeLocalNetworkPermission",

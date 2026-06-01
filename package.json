@@ -35,7 +35,7 @@
   "dependencies": {},
   "devDependencies": {
     "@types/react": "~19.2.0",
-    "eslint": "^9.0.0",
+    "eslint": "~9.39.4",
     "expo-module-scripts": "~56.0.3",
     "expo-modules-core": "~56.0.14",
     "prettier": "^3.0.0",

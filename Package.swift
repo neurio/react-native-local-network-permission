@@ -34,6 +34,12 @@ let package = Package(
     )
   ],
   dependencies: [
+    // ⚠️ This relative path assumes a non-hoisted `node_modules/` layout where
+    // this package lives one level deep (e.g. `node_modules/<pkg>/Package.swift`)
+    // and `expo-modules-core` is a sibling. Hoisted monorepo layouts (Yarn
+    // workspaces, pnpm) where `expo-modules-core` resolves elsewhere will fail
+    // to resolve this dependency. The supported install path is RN/Expo's SPM
+    // autolinking, not standalone `swift package` resolution.
     .package(name: "expo-modules-core", path: "../expo-modules-core")
   ],
   targets: [
@@ -54,7 +60,6 @@ let package = Package(
         .copy("PrivacyInfo.xcprivacy")
       ],
       linkerSettings: [
-        .linkedFramework("Foundation"),
         .linkedFramework("Network")
       ]
     )
