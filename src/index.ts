@@ -22,7 +22,6 @@ export const requestLocalNetworkAccess = async () => {
     await checkLocalNetworkAccess();
     return Promise.resolve();
   } catch (error) {
-    // eslint-disable-next-line no-console
     console.warn(`requestLocalNetworkAccess ${JSON.stringify(error)}`);
   }
 };

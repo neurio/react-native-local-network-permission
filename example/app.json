@@ -6,6 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "newArchEnabled": true,
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -13,7 +14,11 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "expo.modules.localnetworkpermission.example"
+      "bundleIdentifier": "expo.modules.localnetworkpermission.example",
+      "deploymentTarget": "16.4",
+      "infoPlist": {
+        "NSLocalNetworkUsageDescription": "This example app demonstrates requesting local network permission."
+      }
     }
   }
 }

@@ -10,7 +10,9 @@ Pod::Spec.new do |s|
   s.license        = package['license']
   s.author         = package['author']
   s.homepage       = package['homepage']
-  s.platform       = :ios, '13.4'
+  s.platforms      = {
+    :ios => '14.0'
+  }
   s.swift_version  = '5.4'
   s.source         = { git: 'https://github.com/neurio/react-native-local-network-permission' }
   s.static_framework = true
@@ -24,4 +26,8 @@ Pod::Spec.new do |s|
   }
   
   s.source_files = "**/*.{h,m,swift}"
+
+  s.resource_bundles = {
+    'ReactNativeLocalNetworkPermission_privacy' => ['PrivacyInfo.xcprivacy']
+  }
 end

@@ -11,6 +11,15 @@ Add this library to your project:
 
 `yarn add @generac/react-native-local-network-permission`
 
+### Swift Package Manager support
+
+CocoaPods (via the bundled `.podspec`) is still the primary install path and works for every React Native and Expo app today.
+
+This module also ships SPM scaffolding for the migration described in [React Native RFC 0994](https://github.com/react-native-community/discussions-and-proposals/pull/994) (CocoaPods deprecation, December 2026):
+
+- `spm.config.json` — consumed by Expo's `et prebuild` pipeline (`EXPO_USE_PRECOMPILED_MODULES=1`) to generate XCFrameworks. Picked up automatically by Expo's autolinking; no extra setup.
+- `Package.swift` — a forward-compatible manifest. The library target declares its dependency on `ExpoModulesCore` by name; the consumer's autolinking pipeline (RN CLI's SPM autolinking once it lands, or a hand-written brownfield manifest) is responsible for providing `.package(path: ".../node_modules/expo-modules-core")`. As a result, this `Package.swift` does not resolve standalone via "Add Package Dependencies…" in Xcode today — that workflow becomes available once the React Native SPM autolinking proposal lands.
+
 ### iOS manual configuration
 
 #### NSLocalNetworkUsageDescription
