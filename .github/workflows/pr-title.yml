@@ -1,0 +1,36 @@
+# release-automation: v6
+# Shared with the other library repos. Keep this file identical in all of them.
+name: PR title
+on:
+  pull_request_target:
+    types: [opened, edited, synchronize, reopened, labeled, unlabeled]
+permissions:
+  pull-requests: read
+jobs:
+  main:
+    name: Validate PR title
+    runs-on: ubuntu-latest
+    steps:
+      - uses: amannn/action-semantic-pull-request@48f256284bd46cdaab1048c3721360e808335d50 # v6.1.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          types: |
+            feat
+            fix
+            docs
+            chore
+            refactor
+            perf
+            test
+            build
+            ci
+            revert
+            style
+          requireScope: false
+          subjectPattern: ^.*\b[A-Z][A-Z0-9]+-[0-9]+\b.*$
+          subjectPatternError: |
+            The subject "{subject}" has no ticket key.
+            Add one anywhere in the subject, for example "fix: reject unreadable key store (IA-5752)".
+          ignoreLabels: |
+            dependencies

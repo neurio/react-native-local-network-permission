@@ -106,10 +106,9 @@ This repository uses a [commit message convention](https://github.com/convention
 which is enforced by a pre-commit hook. If you execute `npm run commit` instead of `git commit -m "some message"` you
 will be guided through the steps to write an acceptable commit message.
 
-It is important that you do this properly, because
-the [semantic-release](https://github.com/semantic-release/semantic-release) automation depends on the commit messages
-to be starting with the proper keyword to determine if a major, minor or
-patch [semantic version](https://semver.org/) should be assigned.
+Releases use the title of the pull request, not the commit messages. When you squash and merge, the
+[semantic-release](https://github.com/semantic-release/semantic-release) automation reads the title to find the
+next [semantic version](https://semver.org/). See [PUBLISHING.md](PUBLISHING.md) for the title format.
 
 ## See also
 

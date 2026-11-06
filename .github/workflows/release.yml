@@ -1,37 +1,58 @@
+# release-automation: v6
+# npm variant: publishes to npmjs.com with npm trusted publishing (OIDC). The other library repos use the GitHub Packages variant.
 name: Release
 on:
   push:
-    branches:
-      - main
-
+    branches: [main]
+env:
+  NODE_VERSION: 24
+concurrency:
+  group: release
+  cancel-in-progress: false
 permissions:
-  contents: read # for checkout
-
+  contents: read
 jobs:
   release:
-    name: Release
     runs-on: ubuntu-latest
     permissions:
-      contents: write # to be able to publish a GitHub release
-      issues: write # to be able to comment on released issues
-      pull-requests: write # to be able to comment on released pull requests
-      id-token: write # to enable use of OIDC for npm provenance
+      contents: write
+      issues: write
+      pull-requests: write
+      id-token: write
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           persist-credentials: false
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      # No registry-url: it would write an .npmrc that needs NODE_AUTH_TOKEN, and npm publish uses OIDC instead.
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: "lts/*"
-      - name: Install dependencies
-        run: yarn install
-#      - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
-#        run: yarn audit signatures
-      - name: Release
+          node-version: ${{ env.NODE_VERSION }}
+      # Dependencies do not run install scripts, so a compromised package cannot read the job's tokens.
+      # npm publish still runs the package's own prepublishOnly, which builds build/.
+      - name: Install (Yarn 1 or 2+)
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
-        run: npx semantic-release
+          NPM_CONFIG_IGNORE_SCRIPTS: "true"
+          YARN_ENABLE_SCRIPTS: "false"
+        run: |
+          if [ -f .yarnrc.yml ]; then
+            corepack enable
+            yarn install --immutable
+          else
+            yarn install --frozen-lockfile --ignore-scripts
+          fi
+      - run: yarn release:check
+      # The App token is needed only once a ruleset blocks direct pushes to main. Until then the job uses GITHUB_TOKEN.
+      - uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
+        if: vars.APP_ID || vars.GHA_APP_ID
+        id: app-token
+        with:
+          app-id: ${{ vars.APP_ID || vars.GHA_APP_ID }}
+          private-key: ${{ secrets.PRIVATE_KEY || secrets.GHA_PRIVATE_KEY }}
+          repositories: ${{ github.event.repository.name }}
+          permission-contents: write
+          permission-issues: write
+          permission-pull-requests: write
+      - run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token || secrets.GITHUB_TOKEN }}

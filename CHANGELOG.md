@@ -1,4 +1,6 @@
-# Change log
+# Changelog
+
+All notable changes to this project will be documented in this file.
 
 # [1.3.0](https://github.com/neurio/react-native-local-network-permission/compare/v1.2.0...v1.3.0) (2026-06-01)
 
