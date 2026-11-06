@@ -13,6 +13,6 @@ Thank you for taking the time to contribute!
 * Open a new GitHub pull request.
 * Ensure the PR description clearly describes the problem and solution. Include the relevant issue number if applicable.
 
-#### Commit messages
+#### Pull request titles
 
 Releases come from the pull request title on squash merge. Use the title format in [PUBLISHING.md](PUBLISHING.md).

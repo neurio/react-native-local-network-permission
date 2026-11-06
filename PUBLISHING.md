@@ -12,7 +12,8 @@ request sets the type of release. Use this format:
 ```
 
 For example: `fix: handle denied permission (IA-7000)`. Put the ticket key anywhere in the subject.
-Add `!` after the type for a breaking change. A check blocks the merge when the title does not match.
+Add `!` after the type for a breaking change. The `Validate PR title` check fails when the title does
+not match. It blocks the merge only when a ruleset on `main` makes it a required check.
 The GitHub Revert button gives the title `Revert "fix: ..."`, which has no type. Change it to
 `revert: fix: ... (IA-1234)` before you merge.
 
@@ -41,3 +42,19 @@ file name, first update the trusted publisher settings of the package on npmjs.c
 ## Consuming This Package
 
 Run `yarn add @generac/react-native-local-network-permission`. You do not need an `.npmrc` file.
+
+### Scope collision with GitHub Packages
+
+Some apps send the `@generac` scope to GitHub Packages in their `.npmrc`, for example
+installer-app:
+
+```text
+@generac:registry=https://npm.pkg.github.com
+```
+
+This package is not on GitHub Packages. With that `.npmrc`, `yarn add` and `yarn upgrade` fail with
+`E404`. In such an app, add the package with its npmjs.com tarball URL:
+
+```bash
+yarn add https://registry.npmjs.org/@generac/react-native-local-network-permission/-/react-native-local-network-permission-<version>.tgz
+```
