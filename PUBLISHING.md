@@ -46,15 +46,6 @@ Run `yarn add @generac/react-native-local-network-permission`. You do not need a
 ### Scope collision with GitHub Packages
 
 Some apps send the `@generac` scope to GitHub Packages in their `.npmrc`, for example
-installer-app:
-
-```text
-@generac:registry=https://npm.pkg.github.com
-```
-
-This package is not on GitHub Packages. With that `.npmrc`, `yarn add` and `yarn upgrade` fail with
-`E404`. In such an app, add the package with its npmjs.com tarball URL:
-
-```bash
-yarn add https://registry.npmjs.org/@generac/react-native-local-network-permission/-/react-native-local-network-permission-<version>.tgz
-```
+installer-app. This package is not on GitHub Packages, so with that `.npmrc`, `yarn add` and
+`yarn upgrade` fail with `E404`. installer-app documents a work-around in
+[docs/development.md](https://github.com/neurio/installer-app/blob/main/docs/development.md#work-around-for-mix-of-public-and-private-generac-scoped-npm-packages).
